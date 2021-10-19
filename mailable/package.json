@@ -1,0 +1,42 @@
+{
+  "name": "@tellimer/mailable",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "ts-mocha --paths '**/*/*.test.ts' --exit",
+    "build": "rm -rf ./dist && tsc -p tsconfig.json && cp -r src/styles dist && cp src/email.html dist/email.html",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint": "eslint src --fix"
+  },
+  "dependencies": {
+    "juice": "^8.0.0",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@types/expect": "^24.3.0",
+    "@types/mocha": "^9.0.0",
+    "@types/react": "^17.0.29",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
+    "eslint": "^8.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "mocha": "^9.1.2",
+    "prettier": "^2.4.1",
+    "sass-loader": "^10",
+    "ts-mocha": "^8.0.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
+  }
+}

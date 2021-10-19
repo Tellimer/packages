@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "target": "ES2016",
+    "moduleResolution": "Node",
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "rootDir": "./src",
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}

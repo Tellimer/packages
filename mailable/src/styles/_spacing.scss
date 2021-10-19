@@ -1,0 +1,23 @@
+$types: ("padding": "p", "margin": "m");
+$positions: ("top": "t", "bottom": "b", "left": "l", "right": "r");
+
+@for $i from 0 through 8 {
+  @each $property, $shortcut in $types {
+    @each $propertySuffix, $shortcutSuffix in $positions {
+      .#{$shortcut}#{$shortcutSuffix}-#{$i} {
+        #{$property}-#{$propertySuffix}: $spacing * $i !important;
+      }
+      .#{$shortcut}-#{$i} {
+        #{$property}-#{$propertySuffix}: $spacing * $i !important;
+      }
+    }
+    .#{$shortcut}y-#{$i} {
+      #{$property}-top: $spacing * $i;
+      #{$property}-bottom: $spacing * $i;
+    }
+    .#{$shortcut}x-#{$i} {
+      #{$property}-left: $spacing * $i;
+      #{$property}-right: $spacing * $i;
+    }
+  }
+}
