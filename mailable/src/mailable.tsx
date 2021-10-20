@@ -2,7 +2,7 @@
 import React from 'react'
 import dom from 'react-dom/server'
 import juice from 'juice'
-import sass from 'node-sass'
+
 import path from 'path'
 import fs from 'fs'
 
@@ -58,9 +58,10 @@ export abstract class Mailable {
       applyAttributesTableElements: false,
       removeStyleTags: false,
       extraCss: [
-        sass.renderSync({
-          file: path.join(__dirname, './styles/main.scss'),
-        }).css,
+        // sass.renderSync({
+        //   file: path.join(__dirname, './styles/main.scss'),
+        // }).css,
+        // fs.readFileSync('./styles/main.css'),
         await this.css(),
       ].join('\n'),
     })

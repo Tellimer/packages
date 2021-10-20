@@ -1,8 +1,9 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.0-RC2",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "ts-mocha --paths './__tests__/**/*.test.ts' --exit",
     "build": "rm -rf ./dist && tsc -p tsconfig.json",

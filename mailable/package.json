@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.0",
+  "version": "1.0.0-RC4",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "juice": "^8.0.0",
-    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
