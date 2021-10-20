@@ -46,6 +46,10 @@ export abstract class Mailable {
     return ''
   }
 
+  defaultCss() {
+    return fs.readFileSync(path.join(__dirname, './styles/main.css')).toString()
+  }
+
   async render() {
     const email = dom.renderToString(await this.view())
     const html = fs
@@ -57,13 +61,7 @@ export abstract class Mailable {
     return juice(html, {
       applyAttributesTableElements: false,
       removeStyleTags: false,
-      extraCss: [
-        // sass.renderSync({
-        //   file: path.join(__dirname, './styles/main.scss'),
-        // }).css,
-        // fs.readFileSync('./styles/main.css'),
-        await this.css(),
-      ].join('\n'),
+      extraCss: [this.defaultCss(), await this.css()].join('\n'),
     })
   }
 }
