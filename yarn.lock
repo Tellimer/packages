@@ -2207,7 +2207,7 @@
     store2 "^2.12.0"
 
 "@tellimer/mailable@*":
-  version "1.0.0-RC4"
+  version "1.0.0-RC5"
   dependencies:
     juice "^8.0.0"
     react "^17.0.2"
