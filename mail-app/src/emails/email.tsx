@@ -14,26 +14,24 @@ export abstract class Email extends Mailable {
     const header = (
       <EmailTable>
         <EmailRow>
-          <EmailCol>
-            <EmailTable>
-              <EmailRow>
-                <EmailCol>
-                  <EmailImage
-                    src="https://cdn.tellimer.com/providers/email-tellimer-email-logo-11png.png"
-                    width={128}
-                    height={32}
-                    alt="Tellimer" />
-                </EmailCol>
-                <EmailCol right valign="middle">
-                  <EmailLink href="#" color="#999999" underline className="text-xs">View in your browser</EmailLink>
-                </EmailCol>
-              </EmailRow>
-            </EmailTable>
+          <EmailCol center>
+            <EmailLink href="#" color="#9CA3AF" underline className="text-xs">View in your browser</EmailLink>
           </EmailCol>
         </EmailRow>
         <EmailRow>
           <EmailCol>
-            <EmailHr spacing={32} color="#e2e2e2" />
+            <EmailSection center pad={49}>
+              <EmailImage
+                src="https://cdn.tellimer.com/providers/email-tellimer-email-logo-11png.png"
+                width={128}
+                height={32}
+                alt="Tellimer" />
+            </EmailSection>
+          </EmailCol>
+        </EmailRow>
+        <EmailRow>
+          <EmailCol>
+            <EmailHr spacingBottom={50} spacingTop={0} color="#E5E7EB" />
           </EmailCol>
         </EmailRow>
       </EmailTable>
@@ -43,12 +41,12 @@ export abstract class Email extends Mailable {
       <EmailTable className="text-sm">
         <EmailRow>
           <EmailCol>
-            <EmailHr height={2} />
+            <EmailHr height={1} color="#E5E7EB" spacing={0} />
           </EmailCol>
         </EmailRow>
         <EmailRow>
           <EmailCol center>
-            <EmailSection center pad={32}>
+            <EmailSection center pad={24}>
               <EmailTable width={300}>
                 <EmailRow>
                   <EmailCol center>
@@ -78,7 +76,7 @@ export abstract class Email extends Mailable {
         </EmailRow>
         <EmailRow>
           <EmailCol>
-            <EmailHr color="#ccc" />
+            <EmailHr color="#E5E7EB" spacing={0} />
           </EmailCol>
         </EmailRow>
         <EmailRow>
@@ -87,17 +85,17 @@ export abstract class Email extends Mailable {
               <EmailTable width={500}>
                 <EmailRow>
                   <EmailCol center>
-                    <EmailLink underline color="#777777" href="#">
+                    <EmailLink underline color="#9CA3AF" href="#">
                       Unsubscribe
                     </EmailLink>
                   </EmailCol>
                   <EmailCol center>
-                    <EmailLink underline color="#777777" href="#">
+                    <EmailLink underline color="#9CA3AF" href="#">
                       Change your preferences
                     </EmailLink>
                   </EmailCol>
                   <EmailCol center>
-                    <EmailLink underline color="#777777" href="#">
+                    <EmailLink underline color="#9CA3AF" href="#">
                       Get support
                     </EmailLink>
                   </EmailCol>
@@ -108,10 +106,10 @@ export abstract class Email extends Mailable {
         </EmailRow>
         <EmailRow>
           <EmailCol center className="text-xs">
-            <p style={{color: '#777777'}}>
+            <p style={{color: '#9CA3AF'}}>
               Tellimer, 1 Long Lane, London SE1 4PG, United Kingdom
             </p>
-            <p style={{color: '#777777'}}>
+            <p style={{color: '#9CA3AF'}}>
               Tellimer is a company incorporated in England with registered number OC371725. By receiving this e-mail and/or accessing the links provided herein you agree to be bound by the Tellimer Terms of Use. Tellimer is authorised and regulated by the Financial Conduct Authority
             </p>
           </EmailCol>
@@ -122,7 +120,7 @@ export abstract class Email extends Mailable {
     const children = await this.email()
 
     return (
-      <Components.Email {...{header, footer}}>
+      <Components.Email {...{header, footer}} width={520}>
         {children}
       </Components.Email>
     )
@@ -132,6 +130,11 @@ export abstract class Email extends Mailable {
     return `
       body {
         background: #ffffff;
+        color: #374151;
+      }
+
+      .text-4xl {
+        color: #111827;
       }
     `
   }

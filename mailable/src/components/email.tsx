@@ -6,11 +6,14 @@ import { EmailTable } from './email-table'
 type Props = {
   header?: React.ReactElement
   footer?: React.ReactElement
+  width?: number
   preheaderText?: string
 }
 
 export class Email extends Component<Props> {
+
   render() {
+    const width = this.props.width || 600
     return (
       <>
         <p className="email-preheader-text">{this.props.preheaderText}</p>
@@ -18,7 +21,7 @@ export class Email extends Component<Props> {
           {this.props.header && (
             <tr>
               <td align="center" className="pt-4">
-                <table role="presentation" width={600} className="email-header">
+                <table role="presentation" width={width} className="email-header">
                   <tr>
                     <td>{this.props.header}</td>
                   </tr>
@@ -28,7 +31,7 @@ export class Email extends Component<Props> {
           )}
           <tr>
             <td align="center">
-              <EmailTable className="email-body" width={600}>
+              <EmailTable className="email-body" width={width}>
                 <EmailRow>
                   <EmailCol className="email-content">{this.props.children}</EmailCol>
                 </EmailRow>
@@ -38,7 +41,7 @@ export class Email extends Component<Props> {
           {this.props.footer && (
             <tr>
               <td align="center" className="pt-4">
-                <table role="presentation" width={600} className="email-footer">
+                <table role="presentation" width={width} className="email-footer">
                   <tr>
                     <td>{this.props.footer}</td>
                   </tr>

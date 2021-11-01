@@ -61,7 +61,10 @@ export abstract class Mailable {
     return juice(html, {
       applyAttributesTableElements: false,
       removeStyleTags: false,
+      preserveImportant: true,
       extraCss: [this.defaultCss(), await this.css()].join('\n'),
     })
+      .split('text-decoration: none !important;')
+      .join('text-decoration: none !important;text-decoration: none;text-underline: none;')
   }
 }

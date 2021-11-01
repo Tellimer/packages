@@ -2,19 +2,26 @@ import React, { Component } from 'react'
 import { EmailCol, EmailRow, EmailTable } from '.'
 
 type Props = {
+  spacingTop?: number
+  spacingBottom?: number
   spacing?: number
   color?: string
   height?: number
 }
 export class EmailHr extends Component<Props> {
   render() {
-    const padding = this.props.spacing === undefined ? 8 : this.props.spacing
+    const defaultPadding = this.props.spacing === undefined ? 8 : this.props.spacing
+    const paddingTop = this.props.spacingTop === undefined ? defaultPadding : this.props.spacingTop
+    const paddingBottom =
+      this.props.spacingBottom === undefined ? defaultPadding : this.props.spacingBottom
 
     return (
       <EmailTable>
-        <EmailRow>
-          <EmailCol style={{ height: padding, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
-        </EmailRow>
+        {paddingTop > 0 && (
+          <EmailRow>
+            <EmailCol style={{ height: paddingTop, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
+          </EmailRow>
+        )}
         <EmailRow>
           <EmailCol
             style={{
@@ -27,9 +34,13 @@ export class EmailHr extends Component<Props> {
             &nbsp;
           </EmailCol>
         </EmailRow>
-        <EmailRow>
-          <EmailCol style={{ height: padding, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
-        </EmailRow>
+        {paddingBottom > 0 && (
+          <EmailRow>
+            <EmailCol style={{ height: paddingBottom, lineHeight: 0, fontSize: 0 }}>
+              &nbsp;
+            </EmailCol>
+          </EmailRow>
+        )}
       </EmailTable>
     )
   }

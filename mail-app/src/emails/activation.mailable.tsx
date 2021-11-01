@@ -1,8 +1,9 @@
 import React from 'react'
-import { Mailable, Components } from '@tellimer/mailable'
+// @ts-ignore
+import { Mailable, Components } from '../../../mailable/src'
 import { Email } from './email'
 
-const { EmailRow, EmailCol, EmailTable, EmailImage, EmailLink, EmailHr, EmailSection, EmailButton } = Components
+const { EmailRow, EmailCol, EmailTable, EmailImage, EmailLink, EmailHr, EmailSection, EmailAutosizeButton } = Components
 
 export class ActivationMailable extends Email {
   subject = 'test'
@@ -25,9 +26,7 @@ export class ActivationMailable extends Email {
           </p>
         </EmailSection>
         <EmailSection center pad={16}>
-          <EmailButton align="center" width={250} background="#02778F" yPadding={16} href="#">
-            Activate your account
-          </EmailButton>
+          <EmailAutosizeButton align="center" background="#02778F" yPadding={16} href="#" title="Activate your account" />
         </EmailSection>
       </>
     )

@@ -17,7 +17,7 @@ body,html {
 }
 
 body, table, td {
-  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif !important;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
 }
 
 td {
@@ -26,11 +26,19 @@ td {
   margin: 0;
 }
 
+p {
+  letter-spacing: .3px;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
 a {
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
   color: #242424;
   text-decoration: underline;
   * {
     color: #242424;
+    font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
     text-decoration: underline;
   }
 }
