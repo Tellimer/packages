@@ -17,11 +17,9 @@ export class EmailHr extends Component<Props> {
 
     return (
       <EmailTable>
-        {paddingTop > 0 && (
-          <EmailRow>
-            <EmailCol style={{ height: paddingTop, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
-          </EmailRow>
-        )}
+        <EmailRow>
+          <EmailCol style={{ height: paddingTop, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
+        </EmailRow>
         <EmailRow>
           <EmailCol
             style={{
@@ -34,13 +32,9 @@ export class EmailHr extends Component<Props> {
             &nbsp;
           </EmailCol>
         </EmailRow>
-        {paddingBottom > 0 && (
-          <EmailRow>
-            <EmailCol style={{ height: paddingBottom, lineHeight: 0, fontSize: 0 }}>
-              &nbsp;
-            </EmailCol>
-          </EmailRow>
-        )}
+        <EmailRow>
+          <EmailCol style={{ height: paddingBottom, lineHeight: 0, fontSize: 0 }}>&nbsp;</EmailCol>
+        </EmailRow>
       </EmailTable>
     )
   }
