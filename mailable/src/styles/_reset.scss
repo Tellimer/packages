@@ -32,6 +32,14 @@ p {
   padding: 0;
 }
 
+td {
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 a {
   font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
   color: #242424;

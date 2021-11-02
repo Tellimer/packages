@@ -22,8 +22,8 @@ export abstract class Email extends Mailable {
           <EmailCol>
             <EmailSection center pad={49}>
               <EmailImage
-                src="https://cdn.tellimer.com/providers/email-tellimer-email-logo-11png.png"
-                width={128}
+                src="https://d43kqocsoisii.cloudfront.net/files/9kvi6fhyj-email-logo-3x.png"
+                width={143}
                 height={32}
                 alt="Tellimer" />
             </EmailSection>
