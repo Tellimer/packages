@@ -20,7 +20,7 @@ export class Email extends Component<Props> {
         <table className="email-container" role="presentation">
           {this.props.header && (
             <tr>
-              <td align="center" className="pt-4">
+              <td align="center">
                 <table role="presentation" width={width} className="email-header">
                   <tr>
                     <td>{this.props.header}</td>
@@ -40,7 +40,7 @@ export class Email extends Component<Props> {
           </tr>
           {this.props.footer && (
             <tr>
-              <td align="center" className="pt-4">
+              <td align="center">
                 <table role="presentation" width={width} className="email-footer">
                   <tr>
                     <td>{this.props.footer}</td>
