@@ -6,9 +6,18 @@ type Props = {
   height?: number
   alt: string
   className?: string
+  noResize?: boolean
 }
 export class EmailImage extends Component<Props> {
   render() {
-    return <img className="email-image" {...this.props} />
+    const props = { ...this.props }
+
+    props.className = this.props.className || ''
+    props.className += ' email-image'
+    if (this.props.noResize) {
+      props.className += ' do-not-resize'
+    }
+
+    return <img {...props} />
   }
 }
