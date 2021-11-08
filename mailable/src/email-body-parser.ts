@@ -23,7 +23,7 @@ export class EmailBodyParser {
   }
 
   private async addImageSizes(maxWidth: number) {
-    const imgs = this.dom('img.email-image')
+    const imgs = this.dom('img')
     for (const img of imgs) {
       const src = img.attribs.src
       const alt = img.attribs.alt || 'Image'
