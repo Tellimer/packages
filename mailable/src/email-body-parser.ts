@@ -23,7 +23,7 @@ export class EmailBodyParser {
   }
 
   private async addImageSizes(maxWidth: number) {
-    const imgs = this.dom('img')
+    const imgs = this.dom('img:not(.do-not-resize)')
     for (const img of imgs) {
       const src = img.attribs.src
       const alt = img.attribs.alt || 'Image'
@@ -38,18 +38,16 @@ export class EmailBodyParser {
         const specifiedWidth = parseInt(img.attribs.width || '0', 10)
         const specifiedHeight = parseInt(img.attribs.height || '0', 10)
         img.attribs.style = ''
-        if (!(img.attribs.classes || '').includes('do-no-resize')) {
-          if (specifiedWidth > maxWidth) {
-            img.attribs.width = maxWidth.toString()
-          }
+        if (specifiedWidth > maxWidth) {
+          img.attribs.width = maxWidth.toString()
+        }
 
-          if (!img.attribs.width) {
-            const newWidth = width > maxWidth ? maxWidth : width
-            img.attribs.width = newWidth.toString()
-            if (specifiedHeight) {
-              const ratio = width / height
-              img.attribs.width = Math.round(specifiedHeight * ratio).toString()
-            }
+        if (!img.attribs.width) {
+          const newWidth = width > maxWidth ? maxWidth : width
+          img.attribs.width = newWidth.toString()
+          if (specifiedHeight) {
+            const ratio = width / height
+            img.attribs.width = Math.round(specifiedHeight * ratio).toString()
           }
         }
       } catch (e) {

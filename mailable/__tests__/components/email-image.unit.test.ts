@@ -52,7 +52,7 @@ describe('Unit::components/image', () => {
   it('image does not resize when class "do-not-resize" is on the image', async () => {
     const mail = new TestMaxWidthNoResizeImage()
     expect(await mail.render()).to.contain(
-      '<img class="do-not-resize" src="https://test.com/large.png" alt>',
+      '<img src="https://test.com/large.png" alt class=" email-image do-not-resize">',
     )
   })
 })

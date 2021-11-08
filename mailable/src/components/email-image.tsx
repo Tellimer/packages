@@ -10,7 +10,13 @@ type Props = {
 }
 export class EmailImage extends Component<Props> {
   render() {
-    const props = { ...this.props }
+    const props = {
+      src: this.props.src,
+      width: this.props.width,
+      height: this.props.height,
+      alt: this.props.alt,
+      className: this.props.className,
+    }
 
     props.className = this.props.className || ''
     props.className += ' email-image'

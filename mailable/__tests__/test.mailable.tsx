@@ -127,13 +127,9 @@ export class TestMaxWidthNoResizeImage extends Mailable {
     return (
       <Email>
         <div>
-          <EmailImage src="https://test.com/large.png" className="do-not-resize" alt="" />
+          <EmailImage src="https://test.com/large.png" noResize alt="" />
         </div>
       </Email>
     )
-  }
-
-  css() {
-    return 'a { color: red; }'
   }
 }
