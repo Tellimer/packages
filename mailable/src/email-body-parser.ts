@@ -34,17 +34,23 @@ export class EmailBodyParser {
           responseType: 'arraybuffer',
         })
 
-        const { width = maxWidth } = imageSize(response.data)
-        const currentAttr = parseInt(img.attribs.width || '0', 10)
+        const { width = maxWidth, height = 1 } = imageSize(response.data)
+        const specifiedWidth = parseInt(img.attribs.width || '0', 10)
+        const specifiedHeight = parseInt(img.attribs.height || '0', 10)
         img.attribs.style = ''
-        if (
-          width > maxWidth &&
-          (!currentAttr || currentAttr > maxWidth) &&
-          !(img.attribs.classes || '').includes('do-no-resize')
-        ) {
-          img.attribs.width = maxWidth.toString()
-        } else if (!currentAttr) {
-          img.attribs.width = width > maxWidth ? maxWidth.toString() : width.toString()
+        if (!(img.attribs.classes || '').includes('do-no-resize')) {
+          if (specifiedWidth > maxWidth) {
+            img.attribs.width = maxWidth.toString()
+          }
+
+          if (!img.attribs.width) {
+            const newWidth = width > maxWidth ? maxWidth : width
+            img.attribs.width = newWidth.toString()
+            if (specifiedHeight) {
+              const ratio = width / height
+              img.attribs.width = Math.round(specifiedHeight * ratio).toString()
+            }
+          }
         }
       } catch (e) {
         console.error(e)

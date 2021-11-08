@@ -100,6 +100,23 @@ export class TestMaxWidthWithAWidth extends Mailable {
   }
 }
 
+export class TestMaxWidthWithAHeight extends Mailable {
+  subject = 'this is a subject'
+
+  from = { email: 'test@test.com' }
+  maxImageWidth = 520
+
+  view() {
+    return (
+      <Email>
+        <div>
+          <EmailImage src="https://test.com/large.png" height={50} alt="" />
+        </div>
+      </Email>
+    )
+  }
+}
+
 export class TestMaxWidthNoResizeImage extends Mailable {
   subject = 'this is a subject'
 
