@@ -1,4 +1,4 @@
-import {expect} from 'chai'
+import { expect } from 'chai'
 import { Personalization } from '../src/personalization'
 import { Versioned } from './abtest.mailable'
 

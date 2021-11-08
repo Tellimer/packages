@@ -5,9 +5,10 @@ type Props = {
   width?: number
   height?: number
   alt: string
+  className?: string
 }
 export class EmailImage extends Component<Props> {
   render() {
-    return <img {...this.props} />
+    return <img className="email-image" {...this.props} />
   }
 }

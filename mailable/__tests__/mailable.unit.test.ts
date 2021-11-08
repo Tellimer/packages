@@ -1,4 +1,4 @@
-import {expect} from 'chai'
+import { expect } from 'chai'
 import { TestMailable, ScssTest } from './test.mailable'
 
 describe('renders correctly', () => {

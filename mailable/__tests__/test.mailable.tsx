@@ -1,19 +1,17 @@
 import React from 'react'
-import { Email } from '../src/components/email';
-import { Mailable } from '../src/mailable';
-
+import { Email } from '../src/components/email'
+import { EmailImage } from '../src/components/email-image'
+import { Mailable } from '../src/mailable'
 
 export class TestMailable extends Mailable {
   subject = 'this is a subject'
 
-  from = {email: 'test@test.com'}
+  from = { email: 'test@test.com' }
 
   view() {
     return (
       <Email>
-        <div>
-          this is an email, dood
-        </div>
+        <div>this is an email, dood</div>
       </Email>
     )
   }
@@ -29,12 +27,75 @@ export class ScssTest extends TestMailable {
   }
 }
 
-export class MailableWithVariables extends Mailable<[':token']> {
+export class MailableWithVariables extends Mailable {
   subject = 'this is a subject'
 
-  from = {email: 'test@test.com'}
+  from = { email: 'test@test.com' }
 
   view() {
     return <div>:token</div>
+  }
+}
+
+export class TestMaxWidthImage extends Mailable {
+  subject = 'this is a subject'
+
+  from = { email: 'test@test.com' }
+  maxImageWidth = 520
+
+  view() {
+    return (
+      <Email>
+        <div>
+          <EmailImage src="https://test.com/large.png" alt="" />
+        </div>
+      </Email>
+    )
+  }
+
+  css() {
+    return 'a { color: red; }'
+  }
+}
+
+export class TestMaxWidthUnderSizeImage extends Mailable {
+  subject = 'this is a subject'
+
+  from = { email: 'test@test.com' }
+  maxImageWidth = 520
+
+  view() {
+    return (
+      <Email>
+        <div>
+          <EmailImage src="https://test.com/small.png" alt="" />
+        </div>
+      </Email>
+    )
+  }
+
+  css() {
+    return 'a { color: red; }'
+  }
+}
+
+export class TestMaxWidthNoResizeImage extends Mailable {
+  subject = 'this is a subject'
+
+  from = { email: 'test@test.com' }
+  maxImageWidth = 520
+
+  view() {
+    return (
+      <Email>
+        <div>
+          <EmailImage src="https://test.com/large.png" className="do-not-resize" alt="" />
+        </div>
+      </Email>
+    )
+  }
+
+  css() {
+    return 'a { color: red; }'
   }
 }

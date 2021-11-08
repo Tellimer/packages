@@ -11,7 +11,6 @@ type Props = {
 }
 
 export class Email extends Component<Props> {
-
   render() {
     const width = this.props.width || 600
     return (

@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.0-RC12",
+  "version": "1.0.0-RC13",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
@@ -12,6 +12,9 @@
     "lint": "eslint src --fix"
   },
   "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "image-size": "^1.0.0",
     "juice": "^8.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -29,6 +32,7 @@
     "@types/react": "^17.0.29",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "axios-mock-adapter": "^1.20.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "eslint": "^8.0.1",

@@ -5,6 +5,7 @@ import juice from 'juice'
 
 import path from 'path'
 import fs from 'fs'
+import { EmailBodyParser } from './email-body-parser'
 
 export interface AttachmentJSON {
   content: string
@@ -30,6 +31,8 @@ export abstract class Mailable {
 
   abstract from: Person
 
+  maxImageWidth: number
+
   categories(): string[] {
     return []
   }
@@ -52,11 +55,16 @@ export abstract class Mailable {
 
   async render() {
     const email = dom.renderToString(await this.view())
-    const html = fs
+    const rawHtml = fs
       .readFileSync(path.join(__dirname, './email.html'))
       .toString()
       .replace('<div id="email"></div>', email)
       .replace('<title></title>', `<title>${this.subject}</title>`)
+
+    const parser = new EmailBodyParser(rawHtml)
+    const html = await parser.parse({
+      maxImageWidth: this.maxImageWidth,
+    })
 
     return juice(html, {
       applyAttributesTableElements: false,
