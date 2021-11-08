@@ -5,6 +5,7 @@ import {
   TestMaxWidthImage,
   TestMaxWidthUnderSizeImage,
   TestMaxWidthNoResizeImage,
+  TestMaxWidthWithAWidth,
 } from '../test.mailable'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
@@ -32,6 +33,13 @@ describe('Unit::components/image', () => {
   it('image width is good when image size is smaller than 520', async () => {
     const mail = new TestMaxWidthUnderSizeImage()
     expect(await mail.render()).to.contain('width="300"')
+  })
+
+  it('image width does not change if specified width is less than 520', async () => {
+    const mail = new TestMaxWidthWithAWidth()
+    const rendered = await mail.render()
+    expect(rendered).to.not.contain('width="520"')
+    expect(rendered).to.contain('width="200"')
   })
 
   it('image does not resize when class "do-not-resize" is on the image', async () => {

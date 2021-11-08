@@ -79,6 +79,27 @@ export class TestMaxWidthUnderSizeImage extends Mailable {
   }
 }
 
+export class TestMaxWidthWithAWidth extends Mailable {
+  subject = 'this is a subject'
+
+  from = { email: 'test@test.com' }
+  maxImageWidth = 520
+
+  view() {
+    return (
+      <Email>
+        <div>
+          <EmailImage src="https://test.com/large.png" width={200} alt="" />
+        </div>
+      </Email>
+    )
+  }
+
+  css() {
+    return 'a { color: red; }'
+  }
+}
+
 export class TestMaxWidthNoResizeImage extends Mailable {
   subject = 'this is a subject'
 

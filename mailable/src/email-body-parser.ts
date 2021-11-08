@@ -43,8 +43,8 @@ export class EmailBodyParser {
           !(img.attribs.classes || '').includes('do-no-resize')
         ) {
           img.attribs.width = maxWidth.toString()
-        } else {
-          img.attribs.width = width.toString()
+        } else if (!currentAttr) {
+          img.attribs.width = width > maxWidth ? maxWidth.toString() : width.toString()
         }
       } catch (e) {
         console.error(e)
