@@ -19,6 +19,6 @@ describe('renders correctly', () => {
 
   it('wraps li content in a span', async () => {
     const mail = new LiTest()
-    expect(await mail.render()).to.contain('<li><span>')
+    expect(await mail.render()).to.contain('</span></li>')
   })
 })

@@ -69,6 +69,8 @@ export class EmailBodyParser {
             img.attribs.width = Math.round(specifiedHeight * ratio).toString()
           }
         }
+
+        this.dom(img).css({ width: `${img.attribs.width}px` })
       } catch (e) {
         console.error(e)
       }

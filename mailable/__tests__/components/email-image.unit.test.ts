@@ -41,6 +41,7 @@ describe('Unit::components/image', () => {
     const rendered = await mail.render()
     expect(rendered).to.not.contain('width="520"')
     expect(rendered).to.contain('width="200"')
+    expect(rendered).to.contain('width: 200px')
   })
 
   it('fill width when only height is specified', async () => {
