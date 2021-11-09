@@ -27,8 +27,9 @@ export class EmailBodyParser {
   private convertQuoteTags() {
     const quotes = this.dom('q')
     for (const quote of quotes) {
+      const q = '<span>&quot;</span>'
+      this.dom(quote).append(q).prepend(q).addClass('email-quote')
       quote.tagName = 'div'
-      quote.attribs.class = `${quote.attribs.class || ''} email-quote`
     }
   }
 
