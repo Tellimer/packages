@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.0-RC26",
+  "version": "1.0.0-RC27",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
