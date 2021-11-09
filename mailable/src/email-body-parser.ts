@@ -15,11 +15,21 @@ export class EmailBodyParser {
   public async parse(options: Options) {
     this.dom = cheerio.load(`${this.input}`, {})
 
+    this.convertQuoteTags()
+
     if (options.maxImageWidth) {
       await this.addImageSizes(options.maxImageWidth)
     }
 
     return this.dom.html()
+  }
+
+  private convertQuoteTags() {
+    const quotes = this.dom('q')
+    for (const quote of quotes) {
+      quote.tagName = 'div'
+      quote.attribs.class = `${quote.attribs.class || ''} email-quote`
+    }
   }
 
   private async addImageSizes(maxWidth: number) {

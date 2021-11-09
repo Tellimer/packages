@@ -1,12 +1,13 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.0-RC21",
+  "version": "1.0.0-RC23",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "ts-mocha --file '__tests__/setup.ts' --paths '**/*/*.test.ts' --exit",
     "build": "echo 'Building...' && rm -rf ./dist && tsc -p tsconfig.json && node-sass --include-path scss src/styles/main.scss dist/styles/main.css && cp src/email.html dist/email.html",
+    "scss": "node-sass --include-path scss src/styles/main.scss src/styles/main.css",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint src --fix",
