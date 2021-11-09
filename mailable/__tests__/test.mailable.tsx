@@ -33,6 +33,16 @@ export class QuotesTest extends TestMailable {
   }
 }
 
+export class LiTest extends TestMailable {
+  view() {
+    return (
+      <ul>
+        <li>List item</li>
+      </ul>
+    )
+  }
+}
+
 export class MailableWithVariables extends Mailable {
   subject = 'this is a subject'
 

@@ -133,6 +133,10 @@ export abstract class Email extends Mailable {
         color: #374151;
       }
 
+      li span {
+        color: #374151;
+      }
+
       .text-4xl {
         color: #111827;
       }

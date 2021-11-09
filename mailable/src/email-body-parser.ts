@@ -16,6 +16,7 @@ export class EmailBodyParser {
     this.dom = cheerio.load(`${this.input}`, {})
 
     this.convertQuoteTags()
+    this.converLiTags()
 
     if (options.maxImageWidth) {
       await this.addImageSizes(options.maxImageWidth)
@@ -30,6 +31,13 @@ export class EmailBodyParser {
       const q = '<span>&quot;</span>'
       this.dom(quote).append(q).prepend(q).addClass('email-quote')
       quote.tagName = 'div'
+    }
+  }
+
+  private converLiTags() {
+    const listItems = this.dom('li')
+    for (const listItem of listItems) {
+      this.dom(listItem).wrapInner('<span>')
     }
   }
 

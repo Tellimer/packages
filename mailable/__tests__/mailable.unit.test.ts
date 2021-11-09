@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { TestMailable, ScssTest, QuotesTest } from './test.mailable'
+import { TestMailable, ScssTest, QuotesTest, LiTest } from './test.mailable'
 
 describe('renders correctly', () => {
   it('renders correctly', async () => {
@@ -15,5 +15,10 @@ describe('renders correctly', () => {
   it('converts quotes to email-safe quotes', async () => {
     const mail = new QuotesTest()
     expect(await mail.render()).to.contain('email-quote')
+  })
+
+  it('wraps li content in a span', async () => {
+    const mail = new LiTest()
+    expect(await mail.render()).to.contain('<li><span>')
   })
 })

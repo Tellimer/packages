@@ -34,6 +34,10 @@ export class WelcomeMailable extends Email {
             To help you get started, we've put together some top tips to writing world-class content.
           </p>
 
+          <ul>
+            <li>this is at est</li>
+          </ul>
+
           <q>This is a test that goes here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maiores id adipisci quisquam optio corporis beatae magnam, libero necessitatibus quia, aliquid quae doloremque quidem eius voluptate voluptatibus, illo explicabo quaerat!</q>
 
           <p>

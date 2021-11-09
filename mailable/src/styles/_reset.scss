@@ -31,6 +31,26 @@ p {
   padding: 0;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 0;
+  margin-left: 21px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+li {
+  color: #E5E7EB;
+  font-size: 20px;
+  line-height: 24px;
+  span {
+    line-height: 24px;
+    font-size: 16px;
+    color: #242424;
+  }
+}
+
 td {
   p {
     &:last-child {
