@@ -7,6 +7,7 @@ import {
   TestMaxWidthNoResizeImage,
   TestMaxWidthWithAWidth,
   TestMaxWidthWithAHeight,
+  TestEmptyUrlDoesntFail,
 } from '../test.mailable'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
@@ -55,5 +56,10 @@ describe('Unit::components/image', () => {
     expect(await mail.render()).to.contain(
       '<img src="https://test.com/large.png" alt class=" email-image do-not-resize">',
     )
+  })
+
+  it('does not completely error out when URL is invalid', async () => {
+    const mail = new TestEmptyUrlDoesntFail()
+    expect(await mail.render()).to.be.string
   })
 })

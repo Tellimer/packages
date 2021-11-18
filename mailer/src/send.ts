@@ -4,6 +4,7 @@ import {
   MailableVersionFactory,
   Personalization as SendgridPersonalization,
 } from '@tellimer/mailable'
+import { mailerConfig } from '.'
 import { Response } from './response'
 
 sendgrid.setSubstitutionWrappers('', '')
@@ -31,6 +32,15 @@ function isMailableVersionFactory(x: any): x is MailableVersionFactory {
   return typeof x.version === 'function'
 }
 
+function getCustomArgs(personalization: Personalization) {
+  const args = { ...(personalization.customArgs || {}) }
+  for (const key of Object.keys(mailerConfig.customArgs)) {
+    args[key] = mailerConfig.customArgs[key]
+  }
+
+  return Object.keys(args).length === 0 ? undefined : args
+}
+
 function convertPersonalization(personalization: Personalization): SendgridPersonalization {
   const p = {
     to: { email: personalization.email, name: personalization.name },
@@ -38,7 +48,7 @@ function convertPersonalization(personalization: Personalization): SendgridPerso
     bcc: personalization.bcc,
     subject: personalization.subject,
     substitutions: personalization.substitutions,
-    customArgs: personalization.customArgs,
+    customArgs: getCustomArgs(personalization),
   }
 
   Object.keys(p).forEach(key => p[key] === undefined && delete p[key])
