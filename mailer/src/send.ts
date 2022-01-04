@@ -16,7 +16,14 @@ export type PersonObj = {
   email: string
 }
 
-export type Personalization = PersonObj & Omit<SendgridPersonalization, 'to'>
+export type Personalization = PersonObj &
+  Omit<SendgridPersonalization, 'to'> & {
+    customArgs?:
+      | ((p: Personalization) => Record<string, string>)
+      | {
+          [key: string]: string
+        }
+  }
 
 type To = string | Personalization | Personalization[] | string[]
 
