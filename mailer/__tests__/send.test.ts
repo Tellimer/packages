@@ -164,6 +164,7 @@ describe('Unit::send', async () => {
     expect(
       sendStub.calledOnceWith(
         sinon.match({
+          customArgs: mailable.customArgs(),
           personalizations: [
             {
               to: {

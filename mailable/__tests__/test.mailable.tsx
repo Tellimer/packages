@@ -29,7 +29,7 @@ export class ScssTest extends TestMailable {
 
 export class QuotesTest extends TestMailable {
   view() {
-    return <q>This is a quote!</q>
+    return <blockquote>This is a quote!</blockquote>
   }
 }
 

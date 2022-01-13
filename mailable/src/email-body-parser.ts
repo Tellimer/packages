@@ -26,10 +26,14 @@ export class EmailBodyParser {
   }
 
   private convertQuoteTags() {
-    const quotes = this.dom('q')
+    const quotes = this.dom('blockquote')
     for (const quote of quotes) {
       const q = '<span>&quot;</span>'
       this.dom(quote).append(q).prepend(q).addClass('email-quote')
+      const ps = this.dom(quote).find('p')
+      for (const p of ps) {
+        p.tagName = 'span'
+      }
       quote.tagName = 'div'
     }
   }
