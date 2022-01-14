@@ -11,7 +11,6 @@ table {
 body,html {
   margin: 0;
   padding: 0;
-  font-size: 16px;
   color: #242424;
   font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
 }
@@ -38,14 +37,9 @@ ul, ol {
   margin-left: 24px;
   margin-top: 16px;
   margin-bottom: 16px;
-
   li {
     color: #111827;
-    font-size: 20px;
-    line-height: 24px;
     span {
-      line-height: 24px;
-      font-size: 16px;
       p {
         margin: 0;
         padding: 0;
@@ -56,10 +50,12 @@ ul, ol {
   }
 }
 
-ol {
-  li {
-    font-size: 16px !important;
-  }
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
 }
 
 td {

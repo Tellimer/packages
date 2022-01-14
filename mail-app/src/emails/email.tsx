@@ -142,4 +142,16 @@ export abstract class Email extends Mailable {
       }
     `
   }
+
+  mobileCss() {
+    return `
+      h2 {
+        font-size: 26px !important;
+      }
+
+      h3 {
+        font-size: 24px !important;
+      }
+    `
+  }
 }

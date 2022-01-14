@@ -14,6 +14,60 @@
         </xml>
     </noscript>
     <![endif]-->
+    <mobile-css></mobile-css>
+    <style type="text/css">
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 22px !important;
+            }
+
+            .email-body {
+                font-size: 22px !important;
+            }
+
+            .text-lg {
+                font-size: 26px !important;
+            }
+
+            .text-xl {
+                font-size: 32px !important;
+            }
+
+            .text-2xl {
+                font-size: 36px !important;
+            }
+
+            .text-3xl {
+                font-size: 40px !important;
+            }
+
+            .text-4xl {
+                font-size: 44px !important;
+            }
+
+            .email-mobile-only {
+                display: block !important;
+                visibility: visible !important;
+                font-size: inherit !important;
+                height: auto !important;
+                max-height: 100% !important;
+                max-width: 100% !important;
+                width: auto !important;
+                overflow:hidden !important;
+            }
+
+            .email-desktop-only {
+                display:none !important;
+                visibility:hidden;
+                height: 0;
+                max-height: 0;
+                max-width: 0;
+                width: 0;
+                overflow:hidden;
+                font-size: 0;
+            }
+        }
+    </style>
 </head>
 <body>
   <div id="email"></div>

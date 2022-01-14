@@ -16,13 +16,28 @@ export class EmailBodyParser {
     this.dom = cheerio.load(`${this.input}`, {})
 
     this.convertQuoteTags()
-    this.converLiTags()
+    this.convertLiTags()
+    this.convertFigureTags()
 
     if (options.maxImageWidth) {
       await this.addImageSizes(options.maxImageWidth)
     }
 
     return this.dom.html()
+  }
+
+  private convertFigureTags() {
+    const figures = this.dom('figure')
+    for (const figure of figures) {
+      this.dom(figure).addClass('image-figure')
+      figure.tagName = 'div'
+    }
+
+    const figCaptions = this.dom('figcaption')
+    for (const caption of figCaptions) {
+      this.dom(caption).addClass('image-caption')
+      caption.tagName = 'div'
+    }
   }
 
   private convertQuoteTags() {
@@ -38,7 +53,7 @@ export class EmailBodyParser {
     }
   }
 
-  private converLiTags() {
+  private convertLiTags() {
     const listItems = this.dom('li')
     for (const listItem of listItems) {
       this.dom(listItem).wrapInner('<span>')

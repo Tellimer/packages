@@ -49,6 +49,10 @@ export abstract class Mailable {
     return ''
   }
 
+  mobileCss(): Promise<string> | string {
+    return ''
+  }
+
   defaultCss() {
     return fs.readFileSync(path.join(__dirname, './styles/main.css')).toString()
   }
@@ -60,6 +64,10 @@ export abstract class Mailable {
       .toString()
       .replace('<div id="email"></div>', email)
       .replace('<title></title>', `<title>${this.subject}</title>`)
+      .replace(
+        '<mobile-css></mobile-css>',
+        `<style type="text/css">@media only screen and (max-width: 600px) {${await this.mobileCss()}}</style>`,
+      )
 
     const parser = new EmailBodyParser(rawHtml)
     const html = await parser.parse({
