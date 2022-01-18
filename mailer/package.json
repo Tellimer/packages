@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.0-RC8",
+  "version": "1.0.0-RC9",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.7",
-    "@tellimer/mailable": "^1.0.0-RC28"
+    "@tellimer/mailable": "workspace:*"
   },
   "devDependencies": {
     "@types/expect": "^24.3.0",

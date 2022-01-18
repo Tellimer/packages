@@ -2,7 +2,7 @@ import sendgrid from '@sendgrid/mail'
 import {
   Mailable,
   MailableVersionFactory,
-  Personalization as SendgridPersonalization,
+  Personalization as SendgridPersonalization
 } from '@tellimer/mailable'
 import { mailerConfig } from '.'
 import { Response } from './response'
@@ -50,7 +50,7 @@ function getCustomArgs(personalization: Personalization) {
 
 function convertPersonalization(personalization: Personalization): SendgridPersonalization {
   const p = {
-    to: { email: personalization.email, name: personalization.name },
+    to: { email: personalization.email, name: personalization.name || '' },
     cc: personalization.cc,
     bcc: personalization.bcc,
     subject: personalization.subject,

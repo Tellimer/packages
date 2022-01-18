@@ -2206,10 +2206,10 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
-"@tellimer/mailable@*":
-  version "1.0.0-RC34"
-  resolved "https://registry.yarnpkg.com/@tellimer/mailable/-/mailable-1.0.0-RC34.tgz#26d84c254ef9e954783138583a5f62dfe2ce64d9"
-  integrity sha512-blMObe2ro5IiVjCELj4boKB8z6oiAB8qceNDzlFuzGd4ZdsZII5xbBG61cYXoF4xww6ss5EwakcWWdLQ941Ddg==
+"@tellimer/mailable@workspace:*":
+  version "1.0.0-RC33"
+  resolved "https://registry.yarnpkg.com/@tellimer/mailable/-/mailable-1.0.0-RC33.tgz#28f45a56fe8c655d125a041ef561073740fc63db"
+  integrity sha512-qNMltA+yk6FdT3tN4P5oESVBfQ1Lw682ekjKL9rYZ5K3HcnK9H6FB3D5QYVXtj2F4WTN6wRmoWT/3vtjeTL+5w==
   dependencies:
     axios "^0.24.0"
     cheerio "^1.0.0-rc.10"
