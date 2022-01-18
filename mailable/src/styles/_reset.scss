@@ -1,5 +1,8 @@
 body {
   background: #eaeaea;
+}
+
+body * {
   font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
 }
 
@@ -26,14 +29,13 @@ p {
 }
 
 ul, ol {
-  margin: 0;
   padding: 0;
-  padding-left: 0;
-  margin-left: 24px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin: 0 0 0 16px;
   li {
-    color: #111827;
+    &:first-child {
+      margin-top: 10px;
+    }
+    margin-bottom: 10px;
     span {
       p {
         margin: 0;
@@ -43,6 +45,14 @@ ul, ol {
       }
     }
   }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  margin: 0 0 0 24px;
 }
 
 h2 {
@@ -62,12 +72,10 @@ td {
 }
 
 a {
-  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
   color: #242424;
   text-decoration: underline;
   * {
     color: #242424;
-    font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
     text-decoration: underline;
   }
 }

@@ -33,7 +33,8 @@ export class EmailAutosizeButton extends Component<Props> {
       stringWidth(this.props.title, {
         size: fontSize,
         font: fontFamily,
-      }) + 35
+      }) +
+      fontSize * 2
 
     return (
       <EmailButton {...this.props} width={width} fontSize={fontSize} fontFamily={fontFamily}>
