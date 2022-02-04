@@ -183,4 +183,47 @@ describe('Unit::send', async () => {
       ),
     ).to.eq(true)
   })
+
+  it('Adds custom args from the global config AND personalization', async () => {
+    mailerConfig.customArgs = {
+      test: 'arino',
+    }
+
+    const mailable = createMailable()
+    const person = {
+      email: faker.internet.exampleEmail(),
+      name: faker.name.findName(),
+      substitutions: {
+        ':hello': 'world',
+      },
+      customArgs: {
+        userId: '100',
+      },
+    }
+
+    await send(mailable, person)
+
+    expect(
+      sendStub.calledOnceWith(
+        sinon.match({
+          customArgs: mailable.customArgs(),
+          personalizations: [
+            {
+              to: {
+                email: person.email,
+                name: person.name,
+              },
+              substitutions: {
+                ':hello': 'world',
+              },
+              customArgs: {
+                test: 'arino',
+                userId: '100',
+              },
+            },
+          ],
+        }),
+      ),
+    ).to.eq(true)
+  })
 })

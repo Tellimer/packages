@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Props as EmailButtonProps } from './email-button'
-import { EmailButton } from '.'
+import { EmailButton, EmailDesktopOnly, EmailMobileOnly } from '.'
 import stringWidth from 'string-pixel-width'
 
 export type AvailableFont =
@@ -28,18 +28,45 @@ export type Props = Omit<EmailButtonProps, 'width'> & {
 export class EmailAutosizeButton extends Component<Props> {
   render() {
     const fontFamily = this.props.fontFamily || 'Helvetica'
-    const fontSize = parseInt((this.props.fontSize || 16).toString(), 10)
-    const width =
+    const desktopFontSize = parseInt((this.props.fontSize || 16).toString(), 10)
+    const desktopWidth =
       stringWidth(this.props.title, {
-        size: fontSize,
+        size: desktopFontSize,
         font: fontFamily,
       }) +
-      fontSize * 2
+      desktopFontSize * 2
+
+    const mobileFontSize = 1.375 * desktopFontSize
+    const mobileWidth =
+      stringWidth(this.props.title, {
+        size: mobileFontSize,
+        font: fontFamily,
+      }) +
+      mobileFontSize * 2
 
     return (
-      <EmailButton {...this.props} width={width} fontSize={fontSize} fontFamily={fontFamily}>
-        {this.props.title}
-      </EmailButton>
+      <>
+        <EmailDesktopOnly>
+          <EmailButton
+            {...this.props}
+            width={desktopWidth}
+            fontSize={desktopFontSize}
+            fontFamily={fontFamily}
+          >
+            {this.props.title}
+          </EmailButton>
+        </EmailDesktopOnly>
+        <EmailMobileOnly>
+          <EmailButton
+            {...this.props}
+            width={mobileWidth}
+            fontSize={mobileFontSize}
+            fontFamily={fontFamily}
+          >
+            {this.props.title}
+          </EmailButton>
+        </EmailMobileOnly>
+      </>
     )
   }
 }

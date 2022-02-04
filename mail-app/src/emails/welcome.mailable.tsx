@@ -1,5 +1,5 @@
 import React from 'react'
-import { EmailDesktopOnly, EmailMobileOnly } from '../../../mailable/src/components'
+import { EmailButton, EmailDesktopOnly, EmailMobileOnly } from '../../../mailable/src/components'
 // @ts-ignore
 import { Mailable, Components } from '../../../mailable/src/index'
 import { Email } from './email'
@@ -12,111 +12,156 @@ export class WelcomeMailable extends Email {
   email() {
     return (
       <>
-<EmailSection padBottom={24}>
-          <span className="post-title">This is the post title, should look good on multiple lines</span>
+        <EmailSection center padBottom={24} className="text-4xl">
+          Thanks for subscribing to
+          <br /> A publication name!
         </EmailSection>
-        <EmailSection padBottom={24}>
-          <EmailTable>
-            <EmailRow>
-              <EmailCol width={56}>
-                <EmailImage
-                  className="creator-image"
-                  src="https://cdn.scriber.tellimer.io/files/avatar-example.png"
-                  alt="Tom Cook"
-                  width={40}
-                  height={40}
-                ></EmailImage>
-              </EmailCol>
-              <EmailCol>
-                <EmailTable>
-                  <EmailRow>
-                    <EmailCol
-                      className="creator-name"
-                      style={{ lineHeight: '20px', color: '#111827' }}
-                    >
-                      Tom Cook
-                    </EmailCol>
-                  </EmailRow>
-                  <EmailRow>
-                    <EmailCol style={{ lineHeight: '20px', color: '#374151' }}>
-                      A day - 2 Min read
-                    </EmailCol>
-                  </EmailRow>
-                </EmailTable>
-              </EmailCol>
-            </EmailRow>
-          </EmailTable>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
         </EmailSection>
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{
-            __html: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia cupiditate blanditiis neque consequatur repudiandae </p><blockquote><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia cupiditate bland</p></blockquote><p>perferendis pariatur nihil! Eveniet quas nulla quam laboriosam veritatis unde consectetur illo autem repudiandae dolorum.</p><ul><li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia cupiditate bland</p></li><li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi eos quas rem ipsam vitae quia pariatur, hic neque</p></li><li><p>Eaque officia sit repellat delectus amet, numquam alias mollitia est iusto. Nisi?</p></li></ul><h2>This is a heading</h2><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia cupiditate blanditiis neque <a target="_blank" rel="noopener noreferrer nofollow" href="https://localhost.com/api/graphql">here is a link</a> consequatur repudiandae perferendis pariatur nihil! Eveniet quas nulla quam laboriosam veritatis unde consectetur illo autem repudiandae dolorum.</p><ol><li><p>ordered</p></li><li><p>list</p></li><li><p>here</p></li><li><p>another one</p></li></ol><h3>A subheading</h3><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officia cupiditate blanditiis neque consequatur repudiandae perferendis pariatur nihil! Eveniet quas nulla quam laboriosam veritatis unde consectetur illo autem repudiandae dolorum.</p><figure><img width=520 style="width: 520px" src="https://d1e23yf52y86uu.cloudfront.net/files/hkyk82q2s-1r.jpg" alt="" title="This is a building somewhere in the states"><figcaption>This is a building somewhere in the states</figcaption></figure><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem pariatur, libero quia nisi architecto provident consequatur quod, quasi aliquid officia animi recusandae ducimus? Vitae, sequi voluptatem. Expedita cum excepturi aut?</p>`
-          }}
-        ></div>
-        <EmailSection padTop={24}>
-          <EmailDesktopOnly>
-            <EmailAutosizeButton
-              title="View more articles"
-              background={'#000000'}
-              href="#"
-            />
-          </EmailDesktopOnly>
-          <EmailMobileOnly>
-            <EmailAutosizeButton
-              title="View more articles"
-              fontSize={22}
-              background={'#000000'}
-              href="#"
-            />
-          </EmailMobileOnly>
+
+        <EmailSection center padBottom={24} className="text-3xl">
+          Thanks for subscribing to
+          <br /> A publication name!
+        </EmailSection>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
+        </EmailSection>
+
+        <EmailSection center padBottom={24} className="text-2xl">
+          Thanks for subscribing to
+          <br /> A publication name!
+        </EmailSection>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
+        </EmailSection>
+
+        <EmailSection center padBottom={24} className="text-xl">
+          Thanks for subscribing to
+          <br /> A publication name!
+        </EmailSection>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
+        </EmailSection>
+
+        <EmailSection center padBottom={24} className="text-lg">
+          Thanks for subscribing to
+          <br /> A publication name!
+        </EmailSection>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
+        </EmailSection>
+
+        <EmailSection center padBottom={24} className="text-sm">
+          Thanks for subscribing to
+          <br /> A publication name!
+        </EmailSection>
+        <EmailSection center padBottom={16}>
+              <p>
+                You&apos;re now one of the many smart readers who receive timely insights from{' '}
+                A publication name via Scriber.
+              </p>
+              <p>
+                A publication name&apos;s next newsletter will be hitting your inbox soon. In
+                the meantime, visit their publication page to browse all previous posts.
+              </p>
+              <p>You can also view their latest posts below.</p>
+        </EmailSection>
+        <EmailSection center pad={16}>
+          <EmailAutosizeButton
+            align="center"
+            title={`Visit A publication name`}
+            background="#00FF00"
+            href="#"
+          />
         </EmailSection>
       </>
     )
   }
 
-  mobileCss() {
-    return `
+  // mobileCss() {
+  //   return `
 
-    .email-social-image {
-      width: 32px !important;
-      height: 32px !important;
-    }
-      .creator-image {
-        width: 64px !important;
-        height: 64px !important;
-        margin-right: 16px !important;
-      }
+  //   .email-social-image {
+  //     width: 32px !important;
+  //     height: 32px !important;
+  //   }
+  //     .creator-image {
+  //       width: 64px !important;
+  //       height: 64px !important;
+  //       margin-right: 16px !important;
+  //     }
 
-      .creator-name {
-        line-height: 34px !important;
-      }
+  //     .creator-name {
+  //       line-height: 34px !important;
+  //     }
 
-      h2 {
-        font-size: 28px !important;
-      }
+  //     h2 {
+  //       font-size: 28px !important;
+  //     }
 
-      h3 {
-        font-size: 24px !important;
-      }
+  //     h3 {
+  //       font-size: 24px !important;
+  //     }
 
-      .image-caption {
-        font-size: 20px !important;
-      }
+  //     .image-caption {
+  //       font-size: 20px !important;
+  //     }
 
-      .post-content > div,
-      .post-content > p,
-      .post-content > span,
-      .post-content li {
-        line-height: 32px !important;
-      }
+  //     .post-content > div,
+  //     .post-content > p,
+  //     .post-content > span,
+  //     .post-content li {
+  //       line-height: 32px !important;
+  //     }
 
-      .post-content > p,
-      .image-figure,
-      .email-quote {
-        margin-bottom: 32px !important;
-      }
-    `
-  }
+  //     .post-content > p,
+  //     .image-figure,
+  //     .email-quote {
+  //       margin-bottom: 32px !important;
+  //     }
+  //   `
+  // }
 
   css() {
     return `
@@ -135,6 +180,7 @@ export class WelcomeMailable extends Email {
 
       .text-4xl {
         color: #111827;
+        line-height: 40px;
       }
 
       .text-lg {
@@ -167,64 +213,6 @@ export class WelcomeMailable extends Email {
       a * {
         color: #066B64;
         text-decoration: none;
-      }
-      .post-content a {
-        color: #111827;
-        text-decoration: underline !important;
-        font-weight: bold !important;
-      }
-
-      body {
-        color: #111827;
-      }
-
-      .post-content > div,
-      .post-content > p,
-      .post-content > span,
-      .post-content li {
-        font-family: Helvetica, Roboto, Arial, Verdana, Tahoma, sans-serif;
-        line-height: 28px;
-      }
-
-      .post-content > p,
-      .image-figure,
-      .email-quote {
-        margin-bottom: 24px;
-      }
-
-
-      .creator-image {
-        border-radius: 50%;
-      }
-
-      .post-title {
-        font-family: Helvetica, Roboto, Arial, Verdana, Tahoma, sans-serif;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 40px;
-      }
-
-      h2 {
-        font-size: 24px;
-        line-height: 28px;
-        margin-bottom: 16px;
-        letter-spacing: 0;
-        margin-top: 48px;
-      }
-
-      h3 {
-        font-size: 18px;
-        line-height: 22px;
-        margin-top: 32px;
-        letter-spacing: 0;
-        margin-bottom: 16px;
-      }
-
-      .image-caption {
-        color: #6B7280;
-        font-size: 14px;
-        line-height: 1.4;
-        letter-spacing: 0.02em;
       }
     `
   }

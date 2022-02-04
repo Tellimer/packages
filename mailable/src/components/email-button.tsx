@@ -67,14 +67,28 @@ export class EmailButton extends Component<Props> {
               <div
                 dangerouslySetInnerHTML={{
                   __html: `<!--[if mso]>
-      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${this.props.href}" style="height:${buttonStyles.lineHeight};v-text-anchor:middle;width:${buttonStyles.width};" arcsize="12%" strokecolor="${buttonStyles.backgroundColor}" fillcolor="#ffffff">
+      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${
+        this.props.href
+      }" style="height:${buttonStyles.lineHeight};v-text-anchor:middle;width:${
+                    buttonStyles.width
+                  };" arcsize="12%" strokecolor="${
+                    buttonStyles.backgroundColor
+                  }" fillcolor="#ffffff">
       <w:anchorlock/>
-      <center style="color:${buttonStyles.color};font-size:${buttonStyles.fontSize};wat;font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;">
-      ${this.props.children}</center>
+      <center style="color:${buttonStyles.color};font-size:${
+                    buttonStyles.fontSize
+                  };font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;">
+      ${dom.renderToString(this.props.children)}</center>
       </v:roundrect>
       <![endif]--><a href="${this.props.href}"
-      style="background-color:#ffffff;border:1px solid ${buttonStyles.backgroundColor};border-radius:4px;color:${buttonStyles.color};display:inline-block;font-size:${buttonStyles.fontSize};wat;line-height:${buttonStyles.lineHeight};text-align:center;text-decoration:none;width:${buttonStyles.width};-webkit-text-size-adjust:none;mso-hide:all;">
-      ${this.props.children}</a>`,
+      style="background-color:#ffffff;border:1px solid ${
+        buttonStyles.backgroundColor
+      };border-radius:4px;color:${buttonStyles.color};display:inline-block;font-size:${
+                    buttonStyles.fontSize
+                  };text-align:center;text-decoration:none;width:${
+                    buttonStyles.width
+                  };-webkit-text-size-adjust:none;mso-hide:all;">
+      ${dom.renderToString(this.props.children)}</a>`,
                 }}
               ></div>
             </EmailCol>
