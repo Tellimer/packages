@@ -120,7 +120,7 @@ export abstract class Email extends Mailable {
     const children = await this.email()
 
     return (
-      <Components.Email {...{header, footer}} width={520}>
+      <Components.Email {...{header, footer}} width={552}>
         {children}
       </Components.Email>
     )
