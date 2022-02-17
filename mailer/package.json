@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.0-RC10",
+  "version": "1.0.0-RC11",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.4.7",
+    "@sendgrid/mail": "^7.6.0",
     "@tellimer/mailable": "workspace:*"
   },
   "devDependencies": {
