@@ -1,5 +1,5 @@
 import React from "react";
-import { Mailable, Components } from '../../../mailable/src'
+import { Mailable, Components } from '../../../mailable/dist'
 const { EmailRow, EmailCol, EmailTable, EmailImage, EmailLink, EmailHr, EmailSection, EmailButton } = Components
 
 export abstract class Email extends Mailable {

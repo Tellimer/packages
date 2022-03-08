@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "16"
+        },
+        "modules": "auto"
+      }
+    ],
+    "@babel/preset-typescript",
+    "@babel/preset-react"
+  ],
+  "plugins": ["babel-plugin-transform-html-import-to-string", "transform-css-import-to-string"]
+}

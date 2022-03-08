@@ -1,6 +1,6 @@
 import React from 'react'
 // @ts-ignore
-import { Mailable, Components } from '../../../mailable/src'
+import { Mailable, Components } from '../../../mailable/dist'
 import { Email } from './email'
 
 const { EmailRow, EmailCol, EmailTable, EmailImage, EmailLink, EmailHr, EmailSection, EmailAutosizeButton } = Components

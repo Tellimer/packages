@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import dom from 'react-dom/server'
 import juice from 'juice'
@@ -6,6 +5,8 @@ import juice from 'juice'
 import path from 'path'
 import fs from 'fs'
 import { EmailBodyParser } from './email-body-parser'
+import emailHtml from './email.html'
+import css from './styles/main.css'
 
 export interface AttachmentJSON {
   content: string
@@ -54,14 +55,12 @@ export abstract class Mailable {
   }
 
   defaultCss() {
-    return fs.readFileSync(path.join(__dirname, './styles/main.css')).toString()
+    return css
   }
 
   async render() {
     const email = dom.renderToString(await this.view())
-    const rawHtml = fs
-      .readFileSync(path.join(__dirname, './email.html'))
-      .toString()
+    const rawHtml = emailHtml
       .replace('<div id="email"></div>', email)
       .replace('<title></title>', `<title>${this.subject}</title>`)
       .replace(
