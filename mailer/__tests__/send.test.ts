@@ -1,10 +1,10 @@
-import sinon from 'ts-sinon'
 import sendgrid from '@sendgrid/mail'
 import { expect } from 'chai'
+import faker from 'faker'
+import sinon from 'ts-sinon'
+import { mailerConfig } from '../src'
 import { send } from '../src/send'
 import { TestMailable } from './test-mailable'
-import faker from 'faker'
-import { mailerConfig } from '../src'
 
 const createMailable = () => {
   const mailable = new TestMailable()
@@ -67,6 +67,125 @@ describe('Unit::send', async () => {
           personalizations: [
             {
               to: person,
+            },
+          ],
+        }),
+      ),
+    ).to.eq(true)
+  })
+
+  it('Sends to one email address with a null name', async () => {
+    const mailable = createMailable()
+    const person = {
+      email: faker.internet.exampleEmail(),
+      name: null,
+    }
+
+    await send(mailable, person)
+
+    expect(
+      sendStub.calledOnceWith(
+        sinon.match({
+          personalizations: [
+            {
+              to: {
+                email: person.email,
+                name: '',
+              },
+            },
+          ],
+        }),
+      ),
+    ).to.eq(true)
+  })
+
+  it('Sends to one email address with a null name', async () => {
+    const mailable = createMailable()
+    const person = {
+      email: faker.internet.exampleEmail(),
+      name: null,
+    }
+
+    await send(mailable, person)
+
+    expect(
+      sendStub.calledOnceWith(
+        sinon.match({
+          personalizations: [
+            {
+              to: {
+                email: person.email,
+                name: '',
+              },
+            },
+          ],
+        }),
+      ),
+    ).to.eq(true)
+  })
+
+  it('Sends email with null from name', async () => {
+    const mailable = createMailable()
+    // @ts-ignore
+    mailable.from = {
+      email: 'testarino@something.com',
+      name: null,
+    }
+    const person = {
+      email: faker.internet.exampleEmail(),
+      name: faker.name.firstName(),
+    }
+
+    await send(mailable, person)
+
+    expect(
+      sendStub.calledOnceWith(
+        sinon.match({
+          personalizations: [
+            {
+              to: person,
+            },
+          ],
+          from: {
+            name: '',
+            // @ts-ignore
+            email: mailable.from.email,
+          },
+        }),
+      ),
+    ).to.eq(true)
+  })
+
+  it('Sends to multiple email addresses with a null names', async () => {
+    const mailable = createMailable()
+    const persons = [
+      {
+        email: faker.internet.exampleEmail(),
+        name: null,
+      },
+      {
+        email: faker.internet.exampleEmail(),
+        name: null,
+      },
+    ]
+
+    await send(mailable, persons)
+
+    expect(
+      sendStub.calledOnceWith(
+        sinon.match({
+          personalizations: [
+            {
+              to: {
+                email: persons[0].email,
+                name: '',
+              },
+            },
+            {
+              to: {
+                email: persons[1].email,
+                name: '',
+              },
             },
           ],
         }),

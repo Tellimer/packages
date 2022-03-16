@@ -114,11 +114,22 @@ function convertToSendgridPersonalizations(to: To): SendgridPersonalization[] {
   return [{ to }]
 }
 
+function convertFrom(from: Person) {
+  if (typeof from === 'string') {
+    return from
+  }
+
+  return {
+    email: from.email,
+    name: from.name || '',
+  }
+}
+
 async function sendToSendgrid(mailable: Mailable, personalizations: SendgridPersonalization[]) {
   const html = await mailable.render()
 
   const data: sendgrid.MailDataRequired = {
-    from: mailable.from,
+    from: convertFrom(mailable.from),
     subject: mailable.subject,
     customArgs: mailable.customArgs(),
     html,
