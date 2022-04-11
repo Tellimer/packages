@@ -2,12 +2,15 @@ import sendgrid from '@sendgrid/mail'
 import {
   Mailable,
   MailableVersionFactory,
-  Personalization as SendgridPersonalization
+  Personalization as SendgridPersonalization,
 } from '@tellimer/mailable'
+import asyncPool from 'tiny-async-pool'
 import { mailerConfig } from '.'
 import { Response } from './response'
 
 sendgrid.setSubstitutionWrappers('', '')
+
+const POOL_LIMIT = 10
 
 export type Person = string | PersonObj
 
@@ -157,15 +160,20 @@ export async function send(mailable: Mailable | MailableVersionFactory, to: To) 
 
 async function sendInChunks(data: sendgrid.MailDataRequired) {
   const personalizations = [...data.personalizations]
-  const senders: Promise<[sendgrid.ClientResponse, Record<any, any>]>[] = []
+  const senders: [sendgrid.ClientResponse, Record<any, any>][] = []
+  const sendgridData = []
 
   while (personalizations.length > 0) {
     data.personalizations = personalizations.splice(0, 1000)
 
     // data.mailSettings = { sandboxMode: { enable: true } }
     // console.log(JSON.stringify(data, undefined, 2))
-    senders.push(sendgrid.send(data))
+    sendgridData.push(data)
   }
 
-  return await Promise.all(senders)
+  for await (const value of asyncPool(POOL_LIMIT, sendgridData, sendgrid.send)) {
+    senders.push(value)
+  }
+
+  return senders
 }

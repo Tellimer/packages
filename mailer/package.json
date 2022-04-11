@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,8 @@
     "@sendgrid/mail": "^7.6.0"
   },
   "dependencies": {
-    "@tellimer/mailable": "workspace:*"
+    "@tellimer/mailable": "workspace:@tellimer/mailable@*",
+    "tiny-async-pool": "^2.0.1"
   },
   "devDependencies": {
     "@sendgrid/mail": "^7.6.2",
@@ -22,6 +23,7 @@
     "@types/faker": "^5.5.8",
     "@types/mocha": "^9.0.0",
     "@types/react": "^17.0.29",
+    "@types/tiny-async-pool": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "chai": "^4.3.4",

@@ -248,11 +248,11 @@ describe('Unit::send', async () => {
     ).to.eq(true)
   })
 
-  it('Sends to more than 1000 people', async () => {
+  it('Sends to 100,000 people', async () => {
     const mailable = createMailable()
     const people: { name: string; email: string }[] = []
 
-    for (let i = 0; i < 3000; i++) {
+    for (let i = 0; i < 100000; i++) {
       people.push({
         email: faker.internet.exampleEmail(),
         name: faker.name.findName(),
@@ -260,8 +260,7 @@ describe('Unit::send', async () => {
     }
 
     await send(mailable, people)
-
-    expect(sendStub.calledThrice).to.eq(true)
+    expect(sendStub.callCount).to.eq(100)
   })
 
   it('Adds custom args from the global config', async () => {
