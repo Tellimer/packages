@@ -14,7 +14,7 @@
     "@sendgrid/mail": "^7.6.0"
   },
   "dependencies": {
-    "@tellimer/mailable": "workspace:@tellimer/mailable@*",
+    "@tellimer/mailable": "workspace:^",
     "tiny-async-pool": "^2.0.1"
   },
   "devDependencies": {

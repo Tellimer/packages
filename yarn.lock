@@ -3124,7 +3124,7 @@
     react-dom "^17.0.2"
     string-pixel-width "^1.10.0"
 
-"@tellimer/mailable@workspace:@tellimer/mailable@*":
+"@tellimer/mailable@workspace:^":
   version "1.0.0-RC48"
   resolved "https://registry.yarnpkg.com/@tellimer/mailable/-/mailable-1.0.0-RC48.tgz#0a041f699ee4f5c3af8b3687db2f6b74a1452385"
   integrity sha512-15XyQ9T5Zjx4pOzefe+J01eQGyvn0djrKErxf8CVa36G1NR5/3JYtj2LQJsGoVkngEB2zYcxYysDOFNRdnTLmw==
