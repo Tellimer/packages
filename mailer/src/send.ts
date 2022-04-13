@@ -11,6 +11,7 @@ import { Response } from './response'
 sendgrid.setSubstitutionWrappers('', '')
 
 const POOL_LIMIT = 10
+const BATCH_SIZE = parseInt(process.env.SENDGRID_BATCH_SIZE || '1000')
 
 export type Person = string | PersonObj
 
@@ -160,18 +161,21 @@ export async function send(mailable: Mailable | MailableVersionFactory, to: To) 
 
 async function sendInChunks(data: sendgrid.MailDataRequired) {
   const personalizations = [...data.personalizations]
-  const senders: [sendgrid.ClientResponse, Record<any, any>][] = []
-  const sendgridData = []
+  const sendgridData: sendgrid.MailDataRequired[] = []
 
   while (personalizations.length > 0) {
-    data.personalizations = personalizations.splice(0, 1000)
-
-    // data.mailSettings = { sandboxMode: { enable: true } }
-    // console.log(JSON.stringify(data, undefined, 2))
-    sendgridData.push(data)
+    const _data = {
+      ...data,
+    }
+    _data.personalizations = personalizations.splice(0, BATCH_SIZE)
+    sendgridData.push(_data)
   }
 
-  for await (const value of asyncPool(POOL_LIMIT, sendgridData, sendgrid.send)) {
+  const senders: [sendgrid.ClientResponse, Record<any, any>][] = []
+  for await (const value of asyncPool(POOL_LIMIT, sendgridData, d => {
+    console.log(`Sending batch of ${d.personalizations?.length} emails.`)
+    return sendgrid.send(d)
+  })) {
     senders.push(value)
   }
 
