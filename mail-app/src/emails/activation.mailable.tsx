@@ -1,16 +1,17 @@
 import React from 'react'
 // @ts-ignore
 import { Mailable, Components } from '../../../mailable/dist'
-import { Email } from './email'
 
-const { EmailRow, EmailCol, EmailTable, EmailImage, EmailLink, EmailHr, EmailSection, EmailAutosizeButton } = Components
+const { Email, EmailImage, EmailLink, EmailHr, EmailSection, EmailAutosizeButton } = Components
 
-export class ActivationMailable extends Email {
+export class ActivationMailable extends Mailable {
   subject = 'test'
 
-  email() {
+  from = 'test@test.com'
+
+  view() {
     return (
-      <>
+      <Email>
         <EmailSection center className="text-4xl font-bold">
           Activate your account
         </EmailSection>
@@ -24,11 +25,19 @@ export class ActivationMailable extends Email {
           <p>
             Just click the button below to activate your account.
           </p>
+          <blockquote>
+            <p>
+              testarino
+            </p>
+            <p>
+              something else
+            </p>
+          </blockquote>
         </EmailSection>
         <EmailSection center pad={16}>
-          <EmailAutosizeButton align="center" background="#02778F" yPadding={16} href="#" title="Activate your account" />
+          <EmailAutosizeButton align="center" background="#02778F" href="#" title="Activate your account" />
         </EmailSection>
-      </>
+      </Email>
     )
   }
 }
