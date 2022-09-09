@@ -136,6 +136,7 @@ async function sendToSendgrid(mailable: Mailable, personalizations: SendgridPers
     from: convertFrom(mailable.from),
     subject: mailable.subject,
     customArgs: mailable.customArgs(),
+    attachments: await mailable.attachments(),
     html,
     personalizations,
   }
@@ -173,7 +174,6 @@ async function sendInChunks(data: sendgrid.MailDataRequired) {
 
   const senders: [sendgrid.ClientResponse, Record<any, any>][] = []
   for await (const value of asyncPool(POOL_LIMIT, sendgridData, d => {
-    console.log(`Sending batch of ${d.personalizations?.length} emails.`)
     return sendgrid.send(d)
   })) {
     senders.push(value)
