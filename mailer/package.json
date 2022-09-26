@@ -1,9 +1,13 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tellimer/packages/tree/master/mailer"
+  },
   "scripts": {
     "test": "ts-mocha --paths './__tests__/**/*.unit.test.ts' --exit",
     "test:integration": "ts-mocha --paths './__tests__/**/*.integration.test.ts' --exit",
@@ -12,17 +16,19 @@
     "prepare": "yarn build"
   },
   "peerDependencies": {
-    "@sendgrid/mail": "^7.6.0"
+    "@sendgrid/mail": "^7.6.0",
+    "@sendgrid/client": "^7.7.0"
   },
   "dependencies": {
-    "@tellimer/mailable": "workspace:^",
+    "@tellimer/mailable": "*",
     "tiny-async-pool": "^2.0.1"
   },
   "devDependencies": {
-    "@sendgrid/mail": "^7.6.2",
+    "@sendgrid/mail": "^7.6.0",
     "@types/expect": "^24.3.0",
     "@types/faker": "^5.5.8",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^18.7.18",
     "@types/react": "^17.0.29",
     "@types/tiny-async-pool": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",

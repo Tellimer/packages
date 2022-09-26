@@ -1,9 +1,13 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tellimer/packages/tree/master/mailable"
+  },
   "scripts": {
     "test": "ts-mocha --file '__tests__/setup.ts' --paths '**/*/*.test.ts' --exit",
     "build": "echo 'Building...' && rm -rf ./dist && yarn build:types && babel --extensions .ts,.tsx src -d dist",
