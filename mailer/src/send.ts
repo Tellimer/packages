@@ -13,7 +13,7 @@ sendgrid.setSubstitutionWrappers('', '')
 const POOL_LIMIT = 10
 const BATCH_SIZE = parseInt(process.env.SENDGRID_BATCH_SIZE || '1000')
 
-export type Person = string | PersonObj
+export type Person = string | PersonObj | (() => string | PersonObj)
 
 export type PersonObj = {
   name?: string
@@ -119,6 +119,10 @@ function convertToSendgridPersonalizations(to: To): SendgridPersonalization[] {
 }
 
 function convertFrom(from: Person) {
+  if (typeof from === 'function') {
+    return convertFrom(from())
+  }
+
   if (typeof from === 'string') {
     return from
   }
@@ -139,6 +143,10 @@ async function sendToSendgrid(mailable: Mailable, personalizations: SendgridPers
     attachments: await mailable.attachments(),
     html,
     personalizations,
+  }
+
+  if (mailable.replyTo) {
+    data.replyTo = mailable.replyTo
   }
 
   const responses = await sendInChunks(data)

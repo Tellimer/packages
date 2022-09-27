@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,16 +16,17 @@
     "prepare": "yarn build"
   },
   "peerDependencies": {
+    "@sendgrid/client": "^7.7.0",
     "@sendgrid/mail": "^7.6.0",
-    "@sendgrid/client": "^7.7.0"
+    "@tellimer/mailable": "*"
   },
   "dependencies": {
-    "@tellimer/mailable": "*",
     "tiny-async-pool": "^2.0.1"
   },
   "devDependencies": {
+    "@sendgrid/client": "^7.7.0",
     "@sendgrid/mail": "^7.6.0",
-    "@types/expect": "^24.3.0",
+    "@tellimer/mailable": "workspace:*",
     "@types/faker": "^5.5.8",
     "@types/mocha": "^9.0.0",
     "@types/node": "^18.7.18",

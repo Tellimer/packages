@@ -1,9 +1,6 @@
 import React from 'react'
 import dom from 'react-dom/server'
 import juice from 'juice'
-
-import path from 'path'
-import fs from 'fs'
 import { EmailBodyParser } from './email-body-parser'
 import emailHtml from './email.html'
 import css from './styles/main.css'
@@ -31,6 +28,8 @@ export abstract class Mailable {
   abstract subject: string
 
   abstract from: Person
+
+  replyTo = ''
 
   maxImageWidth: number
 
