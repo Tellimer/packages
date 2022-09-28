@@ -1,6 +1,6 @@
 {
   "name": "@tellimer/mailable",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "license": "MIT",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "ts-mocha --file '__tests__/setup.ts' --paths '**/*/*.test.ts' --exit",
-    "build": "echo 'Building...' && rm -rf ./dist && yarn build:types && babel --extensions .ts,.tsx src -d dist",
+    "build": "echo 'Building...' && rm -rf ./dist && yarn scss && yarn build:types && babel --extensions .ts,.tsx src -d dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build-old": "echo 'Building...' && rm -rf ./dist && tsc -p tsconfig.json && node-sass --include-path scss src/styles/main.scss dist/styles/main.css && cp src/email.html dist/email.html",
     "scss": "node-sass --include-path scss src/styles/main.scss src/styles/main.css",

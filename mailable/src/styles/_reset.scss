@@ -72,9 +72,11 @@ td {
 }
 
 a {
+  word-break: break-word;
   color: #242424;
   text-decoration: underline;
   * {
+    word-break: break-word;
     color: #242424;
     text-decoration: underline;
   }
