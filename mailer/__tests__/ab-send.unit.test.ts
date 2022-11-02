@@ -17,7 +17,7 @@ class Versioned extends MailableVersionFactory {
   }
 }
 
-describe('Unit::ab-send', async () => {
+describe('Unit::ab-send', () => {
   let sendStub: sinon.SinonStub
   beforeEach(() => {
     sendStub = sinon.stub(sendgrid, 'send')

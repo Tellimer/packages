@@ -16,7 +16,7 @@ const createMailable = () => {
   return mailable
 }
 
-describe('Integration::send', async () => {
+describe('Integration::send', () => {
   let send
   beforeEach(function () {
     delete require.cache[require.resolve('../src/send')]

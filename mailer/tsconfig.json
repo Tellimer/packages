@@ -13,10 +13,6 @@
     "outDir": "./dist",
     "jsx": "react",
     "resolveJsonModule": true,
-    "rootDir": "./src",
-  },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ]
+    "rootDir": ".",
+  }
 }
