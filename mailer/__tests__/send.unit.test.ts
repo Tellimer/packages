@@ -1,10 +1,11 @@
 import sendgrid from '@sendgrid/mail'
-import { expect } from 'chai'
 import faker from 'faker'
 import sinon from 'ts-sinon'
 import { mailerConfig } from '../src'
 import { send } from '../src/send'
 import { TestMailable } from './test-mailable'
+
+let category = ''
 
 const createMailable = () => {
   const mailable = new TestMailable()
@@ -14,14 +15,19 @@ const createMailable = () => {
 
   mailable.subject = faker.lorem.sentence()
   mailable.from = faker.internet.exampleEmail()
-  mailable.categories = () => [faker.lorem.word()]
+  mailable.categories = () => [category]
   mailable.customArgs = () => customArgs
 
   return mailable
 }
 
-describe('Unit::send', async () => {
+describe('Unit::send', () => {
   let sendStub: sinon.SinonStub
+
+  beforeAll(() => {
+    category = faker.lorem.word()
+  })
+
   beforeEach(() => {
     sendStub = sinon.stub(sendgrid, 'send')
   })
@@ -36,7 +42,7 @@ describe('Unit::send', async () => {
 
     await send(mailable, email)
 
-    expect(sendStub.calledOnceWith(sinon.match({ personalizations: [{ to: email }] }))).to.eq(true)
+    expect(sendStub.calledOnceWith(sinon.match({ categories: mailable.categories(), personalizations: [{ to: email }] }))).toEqual(true)
   })
 
   it('Sends to multiple email address', async () => {
@@ -49,7 +55,7 @@ describe('Unit::send', async () => {
       sendStub.calledOnceWith(
         sinon.match({ personalizations: emails.map(email => ({ to: email })) }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to one email address with a name', async () => {
@@ -71,7 +77,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to one email address with a null name', async () => {
@@ -96,7 +102,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to one email address with a null name', async () => {
@@ -121,7 +127,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends email with null from name', async () => {
@@ -153,7 +159,7 @@ describe('Unit::send', async () => {
           },
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to multiple email addresses with a null names', async () => {
@@ -190,7 +196,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to one email address with a name and substitutions', async () => {
@@ -221,7 +227,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to multiple email address with a name', async () => {
@@ -245,7 +251,7 @@ describe('Unit::send', async () => {
           personalizations: people.map(to => ({ to })),
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Sends to 100,000 people', async () => {
@@ -260,7 +266,7 @@ describe('Unit::send', async () => {
     }
 
     await send(mailable, people)
-    expect(sendStub.callCount).to.eq(100)
+    expect(sendStub.callCount).toEqual(100)
   })
 
   it('Adds custom args from the global config', async () => {
@@ -299,7 +305,7 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 
   it('Adds custom args from the global config AND personalization', async () => {
@@ -342,6 +348,6 @@ describe('Unit::send', async () => {
           ],
         }),
       ),
-    ).to.eq(true)
+    ).toEqual(true)
   })
 })

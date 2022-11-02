@@ -149,6 +149,10 @@ async function sendToSendgrid(mailable: Mailable, personalizations: SendgridPers
     data.replyTo = mailable.replyTo
   }
 
+  if (mailable.categories) {
+    data.categories = mailable.categories()
+  }
+
   const responses = await sendInChunks(data)
   const r = new Response(
     personalizations,
